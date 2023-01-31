@@ -8,6 +8,7 @@ const estimateSchema = new mongoose.Schema(
       name: { type: String },
       mail: { type: String },
       designation: { type: String },
+      phoneNo: { type: String },
     },
     milestone: {
       type: [

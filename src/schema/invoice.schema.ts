@@ -1,12 +1,28 @@
 import mongoose from "mongoose";
-import { staffDetailsSchema } from ".";
 
 const invoiceSchema = new mongoose.Schema(
   {
-    staffDetails: [
-      { type: mongoose.Schema.Types.ObjectId, ref: staffDetailsSchema },
-    ],
+    invoiceId: { type: String },
     issuedOn: { type: Date },
+    client: {
+      name: { type: String },
+      mail: { type: String },
+      designation: { type: String },
+      phoneNo: { type: String },
+    },
+    billingSpecifics: { type: String },
+    shippingSpeciics: { type: String },
+    milestone: {
+      type: [
+        {
+          plan: { type: String },
+          pay: { type: String },
+          currency: { type: String },
+          dueDate: { type: String },
+          deliveryDate: { type: String },
+        },
+      ],
+    },
   },
   { timestamps: true }
 );
