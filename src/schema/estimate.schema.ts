@@ -4,6 +4,8 @@ const estimateSchema = new mongoose.Schema(
   {
     projectId: { type: String, trim: true, required: true },
     publisheOn: { type: Date },
+    billingSpecifics: { type: String },
+    shippingSpeciics: { type: String },
     client: {
       name: { type: String },
       mail: { type: String },
@@ -18,6 +20,7 @@ const estimateSchema = new mongoose.Schema(
           currency: { type: String },
           dueDate: { type: String },
           deliveryDate: { type: String },
+          status: { type: String },
         },
       ],
     },

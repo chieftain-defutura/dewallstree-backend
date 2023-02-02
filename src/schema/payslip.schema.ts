@@ -4,7 +4,8 @@ const payslipSchema = new mongoose.Schema(
   {
     staffId: { type: mongoose.SchemaTypes.ObjectId, ref: StaffDetails },
     deduction: { type: Number },
-    issuedOn: { type: Date },
+    issuedOn: { type: Date, default: Date.now() },
+    status: { type: String },
   },
   { timestamps: true }
 );

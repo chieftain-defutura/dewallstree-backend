@@ -1,9 +1,28 @@
 import { Request, Response } from "express";
 import Payslip from "../schema/payslip.schema";
+import StaffDetails from "../schema/staffDetails.schema";
 
 export const getAllPayslip = async (req: Request, res: Response) => {
   try {
-    const data = await Payslip.find({}).populate("staffId");
+    const staffData = await StaffDetails.find({});
+
+    const data = await Promise.all(
+      staffData.map(async (staff) => {
+        const paySlipData = await Payslip.findOne({
+          staffId: staff._id,
+          month: "febuary",
+        });
+
+        if (!paySlipData)
+          return {
+            ...staff.toJSON(),
+            status: "pending",
+          };
+
+        return { ...staff.toJSON(), ...paySlipData.toJSON() };
+      })
+    );
+
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: { message: "something went wrong" } });

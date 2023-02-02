@@ -4,6 +4,7 @@ const invoiceSchema = new mongoose.Schema(
   {
     invoiceId: { type: String },
     issuedOn: { type: Date },
+    status: { type: String },
     client: {
       name: { type: String },
       mail: { type: String },
@@ -13,15 +14,10 @@ const invoiceSchema = new mongoose.Schema(
     billingSpecifics: { type: String },
     shippingSpeciics: { type: String },
     milestone: {
-      type: [
-        {
-          plan: { type: String },
-          pay: { type: String },
-          currency: { type: String },
-          dueDate: { type: String },
-          deliveryDate: { type: String },
-        },
-      ],
+      pay: { type: String },
+      currency: { type: String },
+      dueDate: { type: String },
+      deliveryDate: { type: String },
     },
   },
   { timestamps: true }
