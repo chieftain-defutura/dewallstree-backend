@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const staffDetailsSchema = new mongoose.Schema(
   {
+    staffNumber: { type: String },
     name: { type: String, trim: true, required: true },
     mobile_no: { type: Number, required: true },
     designation: {
