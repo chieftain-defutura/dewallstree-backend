@@ -3,6 +3,8 @@ import StaffDetails from "./staffDetails.schema";
 const payslipSchema = new mongoose.Schema(
   {
     staffId: { type: mongoose.SchemaTypes.ObjectId, ref: StaffDetails },
+    incentive: { type: Number },
+    reimbursement: { type: Number },
     deduction: { type: Number },
     issuedOn: { type: Date, default: Date.now() },
     status: { type: String },
